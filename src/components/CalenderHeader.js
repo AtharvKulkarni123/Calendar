@@ -16,7 +16,7 @@ export default function CalenderHeader() {
   return (
     <header sx={{ px: 1, py: 2, display: 'flex', alignItems: 'center' }}>
       <Stack sx={{ display: 'flex', flexDirection: "row" }}>
-        <Typography variant='h6' sx={{ color: "grey.500" }}>Calender</Typography>
+        <Typography variant='h6' sx={{ color: "grey.700" }}>Calender</Typography>
         <Button variant='outlined' sx={{ ml: 3, mb: 1, py: 0.5, px: 2 }}>Today</Button>
         <IconButton sx={{ color: "grey.600" }} onClick={handlePrevMonth}>
           <ChevronLeftIcon />
