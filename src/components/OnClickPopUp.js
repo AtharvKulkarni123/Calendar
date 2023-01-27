@@ -1,36 +1,44 @@
-import { Button, Popover, Typography } from '@mui/material'
-import React from 'react'
+import { Button, Card, Popover, Stack, Typography } from '@mui/material'
+import { width } from '@mui/system';
+import React, { useContext } from 'react'
+import GlobalContext from '../context/GlobalContext';
 
-export default function OnClickPopUp() {
+export default function OnClickPopUp({data}) {
     const [anchorEl, setAnchorEl] = React.useState(null);
-  
+    const {setSelectedEvents} = useContext(GlobalContext)
     const handleClick = (event) => {
       setAnchorEl(event.currentTarget);
+      event.stopPropagation()
     };
   
     const handleClose = () => {
       setAnchorEl(null);
     };
-  
+
     const open = Boolean(anchorEl);
-    const id = open ? 'simple-popover' : undefined;
   
     return (
       <div>
-        <Button aria-describedby={id} variant="contained" onClick={handleClick}>
-          Open Popover
+        <Button  onClick={handleClick}>
+          Show More
         </Button>
         <Popover
-          id={id}
           open={open}
+        sx={{width:"500px"}}
           anchorEl={anchorEl}
           onClose={handleClose}
           anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
+             vertical: "bottom",
+            horizontal: "right",
           }}
+
         >
-          <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+             <Card  sx={{width:"100%"}}>
+              {data.map((ele, idx) =>
+                <Typography key={idx} onClick={() => setSelectedEvents(ele)}
+                  sx={{ background: `${ele.label}`, color: "white", mb: 1, m:2, width:"250px"}}> {ele.title}</Typography>
+              )}
+            </Card>
         </Popover>
       </div>
     );
