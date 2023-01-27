@@ -29,7 +29,7 @@ export default function OnClickPopUp({data}) {
           onClose={handleClose}
           anchorOrigin={{
              vertical: "bottom",
-            horizontal: "right",
+            horizontal: "center",
           }}
 
         >
